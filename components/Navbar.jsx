@@ -1,38 +1,58 @@
-"use client";
 import React from "react";
 import Link from "next/link";
-import { SignedIn, useAuth, UserButton} from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
-  const { isSignedIn } = useAuth();
   return (
-    
-    <div className="flex justify-between max-w-screen mt-2 ml-5 mr-5 text-white ">
-      <h1 className="text-4xl font-extrabold font-mono ">E-TimeCapsule</h1>
-      {isSignedIn && (
-        <div className="flex justify-between w-1/2 text-xl font-semibold  text-center">
-          {/* all home routes */}
-          <Link href="/">Home</Link>
-          <Link href="/dashboard">DashBoard</Link>
-          <Link href="alluser">All Users</Link>
-          <SignedIn>
-            <UserButton />
-          </SignedIn>
-        </div>
-      )}
+    <nav className="bg-gray-800 p-4 shadow-md">
+      <div className="container mx-auto flex justify-between items-center text-white">
+        {/* Brand Name */}
+        <Link href="/" className="text-3xl font-extrabold font-mono hover:text-blue-400">
+          E-TimeCapsule
+        </Link>
 
-      {/* all clerk related buttons */}
-      {!isSignedIn && (
-        <div className="justify-between flex w-1/4 " >
-          <Link href="/sign-up">
-            <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mb-4 "  >SignUp</button>
-          </Link>
-          <Link href="/sign-in">
-            <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mb-4 " >Login</button>
-          </Link>
+        {/* Navigation Links */}
+        <div className="flex items-center space-x-6">
+          <SignedIn>
+            {/* Links for Signed-In Users */}
+            <div className="hidden sm:flex space-x-4">
+              <Link href="/" className="hover:text-blue-400">
+                Home
+              </Link>
+              <Link href="/dashboard" className="hover:text-blue-400">
+                Dashboard
+              </Link>
+              <Link href="/alluser" className="hover:text-blue-400">
+                All Users
+              </Link>
+            </div>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+
+          <SignedOut>
+            {/* Buttons for Signed-Out Users */}
+            <div className="flex space-x-4">
+              <Link href="/sign-up">
+                <button
+                  className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded transition duration-300"
+                  aria-label="Sign Up"
+                >
+                  Sign Up
+                </button>
+              </Link>
+              <Link href="/sign-in">
+                <button
+                  className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded transition duration-300"
+                  aria-label="Log In"
+                >
+                  Log In
+                </button>
+              </Link>
+            </div>
+          </SignedOut>
         </div>
-      )}
-    </div>
+      </div>
+    </nav>
   );
 };
 

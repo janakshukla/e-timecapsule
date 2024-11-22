@@ -13,7 +13,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider dynamic>
       <html lang="en">
         <body className='bg-gray-900' >
         <Navbar />  

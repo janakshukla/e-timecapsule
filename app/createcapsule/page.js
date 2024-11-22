@@ -1,8 +1,9 @@
-'use client'
+'use client';
 
 import { useState, useEffect } from 'react';
 import { useUser } from '@clerk/nextjs';
 import axios from 'axios';
+
 export default function CapsuleForm() {
   const { user, isLoaded } = useUser();
 
@@ -14,6 +15,7 @@ export default function CapsuleForm() {
   });
 
   const [image, setImage] = useState(null); // State for the image file
+  const [imagePreview, setImagePreview] = useState(null); // State for image preview
 
   useEffect(() => {
     if (isLoaded && user) {
@@ -33,6 +35,7 @@ export default function CapsuleForm() {
     const file = e.target.files[0];
     if (file) {
       setImage(file);
+      setImagePreview(URL.createObjectURL(file)); // Generate a preview URL for the selected image
     }
   };
 
@@ -41,84 +44,116 @@ export default function CapsuleForm() {
 
     // Prepare form data with image upload
     const data = new FormData();
-    data.append("title", formData.title);
-    data.append("description", formData.description);
-    data.append("date", formData.date);
-    data.append("email", formData.email);
-    if (image) data.append("image", image);
+    data.append('title', formData.title);
+    data.append('description', formData.description);
+    data.append('date', formData.date);
+    data.append('email', formData.email);
+    if (image) data.append('image', image);
 
     try {
-      const response = await axios.post("/api/capsule", data, {
+      const response = await axios.post('/api/capsule', data, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then((response) => {
-        console.log(response.data
-        )
-
+          'Content-Type': 'multipart/form-data',
+        },
       });
+      console.log(response.data);
+      // Optional: Reset form and image preview
+      setFormData({
+        title: '',
+        description: '',
+        date: '',
+        email: user.primaryEmailAddress.emailAddress,
+      });
+      setImage(null);
+      setImagePreview(null);
     } catch (error) {
       console.error('Error:', error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4" encType="multipart/form-data">
+    <form
+      onSubmit={handleSubmit}
+      className="space-y-6 bg-gray-800 p-6 rounded shadow-md text-white"
+      encType="multipart/form-data"
+    >
       <div>
-        <label htmlFor="title">Title</label>
+        <label htmlFor="title" className="block mb-2 font-semibold">
+          Title
+        </label>
         <input
           type="text"
           name="title"
           id="title"
           value={formData.title}
           onChange={handleChange}
-          className="border p-2 w-full"
+          className="border p-2 w-full rounded bg-gray-700 text-white"
           required
           disabled={!isLoaded}
         />
       </div>
 
       <div>
-        <label htmlFor="description">Description</label>
+        <label htmlFor="description" className="block mb-2 font-semibold">
+          Description
+        </label>
         <textarea
           name="description"
           id="description"
           value={formData.description}
           onChange={handleChange}
-          className="border p-2 w-full"
+          className="border p-2 w-full rounded bg-gray-700 text-white"
           required
           disabled={!isLoaded}
         />
       </div>
 
       <div>
-        <label htmlFor="date">Date</label>
+        <label htmlFor="date" className="block mb-2 font-semibold">
+          Date
+        </label>
         <input
           type="date"
           name="date"
           id="date"
           value={formData.date}
           onChange={handleChange}
-          className="border p-2 w-full"
+          className="border p-2 w-full rounded bg-gray-700 text-white"
           required
           disabled={!isLoaded}
         />
       </div>
 
       <div>
-        <label htmlFor="image">Image</label>
+        <label htmlFor="image" className="block mb-2 font-semibold">
+          Image
+        </label>
         <input
           type="file"
           name="image"
           id="image"
           accept="image/*"
           onChange={handleImageChange}
-          className="border p-2 w-full"
+          className="border p-2 w-full rounded bg-gray-700 text-white"
           disabled={!isLoaded}
         />
+        {imagePreview && (
+          <div className="mt-4">
+            <p className="font-semibold">Image Preview:</p>
+            <img
+              src={imagePreview}
+              alt="Selected Preview"
+              className="mt-2 w-full max-w-sm rounded shadow-md"
+            />
+          </div>
+        )}
       </div>
 
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded" disabled={!isLoaded}>
+      <button
+        type="submit"
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold p-2 rounded"
+        disabled={!isLoaded}
+      >
         Submit
       </button>
     </form>
