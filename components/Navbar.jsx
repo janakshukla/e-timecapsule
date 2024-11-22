@@ -6,6 +6,7 @@ import { SignedIn, useAuth, UserButton} from "@clerk/nextjs";
 const Navbar = () => {
   const { isSignedIn } = useAuth();
   return (
+    
     <div className="flex justify-between max-w-screen mt-2 ml-5 mr-5 text-white ">
       <h1 className="text-4xl font-extrabold font-mono ">E-TimeCapsule</h1>
       {isSignedIn && (
