@@ -5,10 +5,8 @@ export async function GET(req) {
     const user = await currentUser(req);
 
     if (!user) {
-        return {
-            status: 401,
-            body: { error: "Not authenticated" },
-        };
+        return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+           
     }
     const capsules = await prisma.capsule.findMany({
         where: {

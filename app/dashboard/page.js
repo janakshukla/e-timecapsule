@@ -10,7 +10,7 @@ export default function Dashboard() {
     const getcapsules = async () => {
       const response = await fetch('/api/capsules').then((res) => res.json()).catch((error) => console.error(error));
       setcapsules(response);
-      console.log(response)
+
 
     }
     getcapsules()
@@ -20,11 +20,11 @@ export default function Dashboard() {
 
 
   return (
-    <div className=" bg-gray-900 text-white ">
+    <div className=" bg-primary-300 text-secondry-100 ">
       <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
 
       <Link href="/createcapsule">
-        <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mb-4">
+        <button className="bg-blue-500 text-secondry-100  py-2 px-4 rounded hover:bg-blue-600 mb-4">
           Create Capsule
         </button>
       </Link>
@@ -44,7 +44,7 @@ export default function Dashboard() {
               />
 
               {/* Title */}
-              <h2 className="text-xl font-semibold mt-4 text-white">
+              <h2 className="text-xl font-semibold mt-4 text-secondry-100">
                 {capsule.title}
               </h2>
 
