@@ -1,6 +1,7 @@
 import { ClerkProvider } from '@clerk/nextjs';
 import Navbar from '@/components/Navbar';
 import "./globals.css";
+
 import syncuser from '@/helpers/syncuser';
 import { Baloo_Bhaijaan_2 } from "next/font/google";
 
@@ -18,9 +19,25 @@ export default function RootLayout({ children }) {
   syncuser();
 
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={
+        {
+          userProfile:{
+            variables:{
+              fontFamily: customFont.family,
+              colorPrimary: "#1f2123",
+            }
+        },
+          variables: {
+            fontFamily: customFont.family,
+            colorDanger: "#e94f37"
+
+          },
+        }
+      }
+    >
       <html lang="en">
-        <body className={`bg-primary-300 ${customFont.className}`}>
+        <body className={` bg-primary-300 ${customFont.className}`}>
           <Navbar />
           {children}
         </body>

@@ -4,10 +4,10 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   return (
-    <nav className="bg-primary-100 p-4 shadow-md">
+    <nav className="from-transparent bg-gradient-to-b to-primary-100 p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center text-white">
         {/* Brand Name */}
-        <Link href="/" className="text-3xl font-extrabold font-mono hover:text-blue-400">
+        <Link href="/" className="md:text-3xl font-extrabold font-mono hover:text-blue-400">
           E-TimeCapsule
         </Link>
 
@@ -26,7 +26,7 @@ const Navbar = () => {
                 All Users
               </Link>
             </div>
-            <UserButton afterSignOutUrl="/" />
+            <UserButton />
           </SignedIn>
 
           <SignedOut>
@@ -34,7 +34,7 @@ const Navbar = () => {
             <div className="flex space-x-4">
               <Link href="/sign-up">
                 <button
-                  className="bg-blue-500 hover:bg-blue-600 text-secondry-100 py-2 px-4 rounded transition duration-300"
+                  className="bg-primary-300 hover:bg-blue-600 text-secondry-100 text-xs md:text-base py-2 px-4 rounded transition duration-300"
                   aria-label="Sign Up"
                 >
                   Sign Up
@@ -42,7 +42,7 @@ const Navbar = () => {
               </Link>
               <Link href="/sign-in">
                 <button
-                  className="bg-blue-500 hover:bg-blue-600 text-secondry-100 py-2 px-4 rounded transition duration-300"
+                  className=" bg-primary-300  hover:bg-blue-600 text-xs text-secondry-100 md:text-base py-2 px-4 rounded transition duration-300"
                   aria-label="Log In"
                 >
                   Log In
