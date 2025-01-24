@@ -8,7 +8,6 @@ import { Baloo_Bhaijaan_2 } from "next/font/google";
 export const metadata = {
   title: "E-TimeCapsule",
   description: "an app made for the future",
-  
 };
 
 const customFont = Baloo_Bhaijaan_2({
@@ -38,9 +37,6 @@ export default function RootLayout({ children }) {
       }
     >
       <html lang="en">
-        <head>
-
-        </head>
         <body className={` bg-primary-300 ${customFont.className}`}>
           <Navbar />
           {children}
