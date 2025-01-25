@@ -60,7 +60,7 @@ export async function POST(req) {
     try {
       if(new Date(date) <= currentdate ){
         const { data, error } = await resend.emails.send({
-          from: "Capsule@janak.tech",
+          from: "Capsule@janak2004.tech",
           to: email,
           subject: "Congratulations! Your capsule is now open! 🎉",
           react: EmailTemplate({
@@ -79,7 +79,7 @@ export async function POST(req) {
       else{scheduleJob(new Date(date), async () => {
         //send email to the user
         const { data, error } = await resend.emails.send({
-          from: "Capsule@janak.tech>",
+          from: "Capsule@janak2004.tech>",
           to: email,
           subject: "Congratulations! Your capsule is now open! 🎉",
           react: EmailTemplate({
