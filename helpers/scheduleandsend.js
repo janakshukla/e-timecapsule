@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export default async function SendCapsule(capsule,user)  {
  try {
      const { data, error } = await resend.emails.send({
-       from: 'Acme <onboarding@resend.dev>',
+       from: 'janak2004.tech',
        to: user.primaryEmailAddress.emailAddress,
        subject: 'Your Capsule is Ready!',
        react: EmailTemplate({ 
