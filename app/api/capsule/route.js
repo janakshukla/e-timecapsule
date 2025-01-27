@@ -1,7 +1,7 @@
 import { prisma } from "@/prisma";
 import { NextResponse } from "next/server";
 import { v2 as cloudinary } from "cloudinary";
-import { scheduleJob } from "node-schedule";
+import {  scheduleJob } from "node-schedule";
 import EmailTemplate from "@/components/Email-template";
 import { Resend } from "resend";
 
@@ -58,7 +58,7 @@ export async function POST(req) {
     });
     //shedule an capsule to the given date
     try {
-      if(new Date(date) <= currentdate ){
+      if (new Date(date) <= currentdate) {
         const { data, error } = await resend.emails.send({
           from: "Capsule@janak2004.tech",
           to: email,
@@ -70,36 +70,43 @@ export async function POST(req) {
             buttonUrl: "",
           }),
         });
-     
+
 
         if (error) {
           return Response.json({ error }, { status: 500 });
         }
       }
-      else{scheduleJob(new Date(date), async () => {
-        //send email to the user
-        const { data, error } = await resend.emails.send({
-          from: "Capsule@janak2004.tech>",
-          to: email,
-          subject: "Congratulations! Your capsule is now open! 🎉",
-          react: EmailTemplate({
-            title: title,
-            description: description,
-            imageUrl: imageUrl,
-            buttonUrl: "",
-          }),
-        });
-        console.log(data);
-
-        if (error) {
-          return Response.json({ error }, { status: 500 });
+      else {
+        scheduleJob(new Date(date), async () => {
+          //send email to the user
+        try {
+            const { data, error } = await resend.emails.send({
+              from: "Capsule@janak2004.tech",
+              to: email,
+              subject: "Congratulations! Your capsule is now open! 🎉",
+              react: EmailTemplate({
+                title: title,
+                description: description,
+                imageUrl: imageUrl,
+                buttonUrl: "",
+              }),
+            });
+            console.log(data);
+            if (error) {
+              return Response.json({ error }, { status: 500 });
+            }
+        } catch (error) {
+          return NextResponse.json({ error: error.message }, { status: 500 });
+          
         }
-      });}
+
+        });
+      }
     } catch (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
-
-    return NextResponse.json({message:"capsule is sceduled to open", capsule });
+    
+    return NextResponse.json({ message: "capsule is sceduled to open", capsule });
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: error.message }, { status: 500 });
