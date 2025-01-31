@@ -1,6 +1,7 @@
 "use client"
 import Loader from "@/components/Loader";
 import Link from "next/link";
+
 import { useEffect, useState } from "react";
 
 export default function Dashboard() {
@@ -32,7 +33,7 @@ export default function Dashboard() {
       <div className="mt-4 grid grid-cols-1  object-center md:grid-cols-2 lg:grid-cols-3 gap-6">
         {capsules?.length > 0 ? (
           capsules.map((capsule) => (
-            <div
+            <Link href={`/capsule/${capsule.id}`} 
               key={capsule.id}
               className="p-4 bg-gray-800 rounded shadow-lg content-center hover:shadow-xl transition-shadow duration-300"
             >
@@ -56,7 +57,7 @@ export default function Dashboard() {
                 <span className="font-bold text-gray-200">updatedAt:</span>{" "}
                 {new Date(capsule.updatedAt).toLocaleDateString()}
               </p>
-            </div>
+            </Link>
           ))
         ) : (
           <div className="w-full col-span-3 flex justify-center items-center ">

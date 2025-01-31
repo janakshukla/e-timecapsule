@@ -68,7 +68,7 @@ export async function POST(req) {
             title: title,
             description: description,
             imageUrl: imageUrl,
-            buttonUrl: "",
+            buttonUrl:  `https://janak2004.tech/capsule/${capsule.id}`,
           }),
         });
 
@@ -87,7 +87,7 @@ export async function POST(req) {
                 title: title,
                 description: description,
                 imageUrl: imageUrl,
-                buttonUrl: "",
+                buttonUrl: `https://janak2004.tech/capsule/${capsule.id}`,
               }),
             });
             console.log(data);
