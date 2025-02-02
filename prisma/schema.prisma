@@ -29,6 +29,7 @@ model Capsule {
   opendate    DateTime
   user        User     @relation(fields: [userId], references: [id])
   userId      String  @map("userId") @db.ObjectId
+  Emailsent   Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
