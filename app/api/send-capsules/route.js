@@ -33,7 +33,7 @@ export async function POST(req) {
                     react: EmailTemplate({
                         title: capsule.title,
                         description: capsule.description,
-                        imageUrl: capsule.imageUrl,
+                        imageUrl: capsule.image,
                         buttonUrl: `https://capsule.janak2004.tech/capsule/${capsule.id}`,
                         buttonText: "Open Capsule"
                     })
