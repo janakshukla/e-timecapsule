@@ -38,21 +38,8 @@ export default async function capsules({ params }) {
               }}
 
             >
-              <button className="text-red-500 hover:text-red-700">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+              <button className="bg-red-500 px-3 py-1 hover:bg-destructive-300 hover:text-primary-300 font-semibold rounded-sm">
+                Delete
               </button>
             </form>
           </div>
