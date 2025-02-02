@@ -59,8 +59,8 @@ export default async function capsules({ params }) {
           <img className="rounded-lg shadow-md" src={capsule.image} width={200} height={200} />
 
           <p className="text-lg mb-4 text-gray-600">{capsule.description}</p>
-          <p className="text-md mb-6 text-gray-500"><span className="text-secondry-300 font-semibold" >OPEN DATE:</span> {JSON.stringify(Date(capsule.opendate))}</p>
-          <p className="text-md mb-6 text-gray-500"><span className="text-secondry-300 font-semibold" >CreatedAT:</span> {JSON.stringify(Date(capsule.createdAt))}</p>
+          <p className="text-md mb-6 text-gray-500"><span className="text-secondry-300 font-semibold" >OPEN DATE:</span> {new Date(capsule.opendate).toLocaleDateString()}</p>
+          <p className="text-md mb-6 text-gray-500"><span className="text-secondry-300 font-semibold" >CreatedAT:</span> { new Date(capsule.createdAt).toLocaleDateString()}</p>
         </div>
       </Suspense>
     </div>
