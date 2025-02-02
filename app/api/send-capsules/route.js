@@ -34,7 +34,7 @@ export async function POST(req) {
                         title: capsule.title,
                         description: capsule.description,
                         imageUrl: capsule.image,
-                        buttonUrl: `https://capsule.janak2004.tech/capsule/${capsule.id}`,
+                        buttonUrl: `https://janak2004.tech/capsule/${capsule.id}`,
                         buttonText: "Open Capsule"
                     })
                 });
