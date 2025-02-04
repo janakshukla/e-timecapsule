@@ -6,7 +6,7 @@ import { Resend } from "resend";
 
 
 const resend = new Resend(process.env.RESEND_API_KEY)
-export async function POST(req) {
+export async function GET(req) {
     try {
         const now = new Date();
         const capsulestosend = await prisma.capsule.findMany({
@@ -39,7 +39,7 @@ export async function POST(req) {
                     })
                 });
                 if (error) {
-                    console.log(`error while sending the mail`, error);
+                    console.log(`Error while sending the mail`, error);
                     return NextResponse.json({ message: "Error while sending the capsules" });
                 } else {
                     await prisma.capsule.update({
@@ -52,13 +52,13 @@ export async function POST(req) {
                     });
                 }
             } catch (error) {
-                console.error(`error while sending the mail`, error);
+                console.error(`Error while sending the mail`, error);
                 return NextResponse.json({ message: "Error while sending the capsules" });
             }
         }
         return NextResponse.json({ message: "Capsules sent successfully" });
     } catch (error) {
-        console.error(`error while sending the mail`, error);
+        console.error(`Error while sending the mail`, error);
         return NextResponse.json({ message: "Error while sending the capsules" });
     }
 }
