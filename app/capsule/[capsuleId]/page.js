@@ -5,8 +5,28 @@ import { redirect } from "next/navigation";
 
 import { Suspense } from "react";
 
+export async function generateMetadata({ params }) {
+  const { capsuleId } = await params;
+  let capsule;
+  try {
+    capsule = await prisma.capsule.findUnique({
+      where: {
+        id: capsuleId,
+      },
+    });
+  } catch (error) {
+    throw new Error("Capsule not found");
+  }
+
+  return {
+    title: capsule.title,
+    description: capsule.description,
+    image: capsule.image,
+  };
+}
 
 export default async function capsules({ params }) {
+ 
   const { capsuleId } = await params;
   let capsule;
   try {
