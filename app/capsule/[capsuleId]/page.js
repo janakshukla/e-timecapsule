@@ -18,11 +18,17 @@ export async function generateMetadata({ params }) {
     throw new Error("Capsule not found");
   }
 
-  return {
-    title: capsule.title,
-    description: capsule.description,
-    image: capsule.image,
-  };
+  if (!capsule) {
+      throw new Error('Capsule not found');
+    }
+
+    return {
+      title: capsule.title,
+      description: capsule.description,
+      openGraph: {
+        images: [capsule.image],
+      }, 
+    };
 }
 
 export default async function capsules({ params }) {
