@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useUser } from '@clerk/nextjs';
 import axios from 'axios';
+import Loader from '@/components/Loader';
 
 export default function CapsuleForm() {
   const { user, isLoaded } = useUser();
@@ -16,6 +17,7 @@ export default function CapsuleForm() {
 
   const [image, setImage] = useState(null); // State for the image file
   const [imagePreview, setImagePreview] = useState(null); // State for image preview
+  const [submitting, setSubmitting] = useState(false)
 
   useEffect(() => {
     if (isLoaded && user) {
@@ -51,12 +53,12 @@ export default function CapsuleForm() {
     if (image) data.append('image', image);
 
     try {
+      setSubmitting(true)
       const response = await axios.post('/api/capsule', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       });
-      console.log(response.data);
       // Optional: Reset form and image preview
       setFormData({
         title: '',
@@ -64,6 +66,7 @@ export default function CapsuleForm() {
         date: '',
         email: user.primaryEmailAddress.emailAddress,
       });
+      setSubmitting(false)
       setImage(null);
       setImagePreview(null);
     } catch (error) {
@@ -72,6 +75,13 @@ export default function CapsuleForm() {
   };
 
   return (
+    <>
+    {submitting && (
+      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+        <span className="text-white text-2xl font-semibold"><Loader/></span>
+      </div>
+    )}
+
     <form
       onSubmit={handleSubmit}
       className="space-y-6 bg-gray-800 p-6 rounded shadow-md text-white"
@@ -89,7 +99,7 @@ export default function CapsuleForm() {
           onChange={handleChange}
           className="border p-2 w-full rounded bg-gray-700 text-white"
           required
-          disabled={!isLoaded}
+          disabled={!isLoaded||submitting}
         />
       </div>
 
@@ -104,7 +114,7 @@ export default function CapsuleForm() {
           onChange={handleChange}
           className="border p-2 w-full rounded bg-gray-700 text-white"
           required
-          disabled={!isLoaded}
+          disabled={!isLoaded||submitting}
         />
       </div>
 
@@ -120,7 +130,7 @@ export default function CapsuleForm() {
           onChange={handleChange}
           className="border p-2 w-full rounded bg-gray-700 text-white"
           required
-          disabled={!isLoaded}
+          disabled={!isLoaded || submitting}
         />
       </div>
 
@@ -132,10 +142,11 @@ export default function CapsuleForm() {
           type="file"
           name="image"
           id="image"
+          required
           accept="image/*"
           onChange={handleImageChange}
           className="border p-2 w-full rounded bg-gray-700 text-white"
-          disabled={!isLoaded}
+          disabled={!isLoaded || submitting}
         />
         {imagePreview && (
           <div className="mt-4">
@@ -151,11 +162,12 @@ export default function CapsuleForm() {
 
       <button
         type="submit"
-        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold p-2 rounded"
-        disabled={!isLoaded}
+        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold p-2 rounded disabled:bg-blue-950 "
+        disabled={!isLoaded || submitting}
       >
         Submit
       </button>
     </form>
+    </>
   );
 }

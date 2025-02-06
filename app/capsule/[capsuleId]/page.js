@@ -27,6 +27,23 @@ export default async function capsules({ params }) {
           <div className="flex items-center justify-between w-full mb-4">
             <h1 className="text-3xl font-bold mb-4 text-secondry-300">{capsule.title}</h1>
             <form
+              action={async() => {
+               "use server";
+                redirect("/dashboard");
+              }}
+
+            >
+              <button>
+                ❌
+              </button>
+            </form>
+          </div>
+          <img className="rounded-lg shadow-md" src={capsule.image} width={300} height={300} />
+
+          <p className="text-lg m-4 text-gray-600">{capsule.description}</p>
+          <p className="text-md mb-6 text-gray-500"><span className="text-secondry-300 font-semibold" >OPEN DATE:</span> {new Date(capsule.opendate).toLocaleDateString()}</p>
+          <p className="text-md mb-6 text-gray-500"><span className="text-secondry-300 font-semibold" >CreatedAT:</span> { new Date(capsule.createdAt).toLocaleDateString()}</p>
+          <form
               action={async () => {
                 "use server";
                 await prisma.capsule.delete({
@@ -38,16 +55,10 @@ export default async function capsules({ params }) {
               }}
 
             >
-              <button className="bg-red-500 px-3 py-1 hover:bg-destructive-300 hover:text-primary-300 font-semibold rounded-sm">
+              <button className="bg-red-500 px-5 py-1 hover:bg-destructive-300 text-white font-semibold rounded-sm">
                 Delete
               </button>
             </form>
-          </div>
-          <img className="rounded-lg shadow-md" src={capsule.image} width={200} height={200} />
-
-          <p className="text-lg mb-4 text-gray-600">{capsule.description}</p>
-          <p className="text-md mb-6 text-gray-500"><span className="text-secondry-300 font-semibold" >OPEN DATE:</span> {new Date(capsule.opendate).toLocaleDateString()}</p>
-          <p className="text-md mb-6 text-gray-500"><span className="text-secondry-300 font-semibold" >CreatedAT:</span> { new Date(capsule.createdAt).toLocaleDateString()}</p>
         </div>
       </Suspense>
     </div>
