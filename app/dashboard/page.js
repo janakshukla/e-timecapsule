@@ -35,7 +35,7 @@ export default function Dashboard() {
         { isloaded ? (
           capsules.length === 0 ? (
             <div className="w-full col-span-3 flex justify-center items-center">
-              <p className="text-gray-400">No Capsules Found</p>
+              <p className="text-secondry-300">No Capsules Found</p>
             </div>
           ) : ( 
           capsules.map((capsule) => (
