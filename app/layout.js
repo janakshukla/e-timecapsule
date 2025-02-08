@@ -4,6 +4,7 @@ import "./globals.css";
 
 import syncuser from '@/helpers/syncuser';
 import { Baloo_Bhaijaan_2 } from "next/font/google";
+import Footer from '@/components/Footer';
 
 export const metadata = {
   title: "E-TimeCapsule",
@@ -40,6 +41,7 @@ export default function RootLayout({ children }) {
         <body className={` bg-primary-300 ${customFont.className}`}>
           <Navbar />
           {children}
+          <Footer />
         </body>
       </html>
     </ClerkProvider>

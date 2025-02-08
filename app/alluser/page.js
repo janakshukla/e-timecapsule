@@ -16,7 +16,7 @@ export default async function Page() {
 
     return (
         <>
-            <div className="w-[100dvw] justify-center gap-2 md:flex md:flex-wrap items-center " >
+            <div className="w-[100dvw] min-h-screen justify-center gap-2 md:flex md:flex-wrap  " >
 
                 {users &&
                     users.map((user) => (
