@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const Hero = () => {
     return (
-        <div className="flex max-sm:flex-col items-center lg:gap-36 h-[80dvh] lg:px-36 ">
+        <div className="flex max-sm:flex-col items-center lg:gap-36  lg:px-36 ">
     
           {/* left div */}
           <div
@@ -14,7 +14,7 @@ const Hero = () => {
             {/* upper section */}
             <section>
               <h1
-                className="text-3xl m-auto text-center tracking-tighter sm:text-5xl mt-16 leading-tight md:mt-32 font-bold "
+                className="text-3xl m-auto text-center tracking-tighter sm:text-5xl mt-16 leading-tight  font-bold "
               >Preserve your memories for the future.</h1>
               <p
                 className="text-gray-300 mx-8 lg:mx-32 text-xs md:text-sm text-center text-wrap leading-normal"
@@ -50,7 +50,7 @@ const Hero = () => {
           </div>
           {/*Right div*/}
           <div
-            className="sm:w-1/2 h-full mt-32 sm:mt-52 w-svw max-sm:h-1/2 "
+            className="sm:w-1/2 h-full sm:mt-16  w-svw max-sm:h-1/2 "
           >
             <Image
               src="/bgimage.webp"

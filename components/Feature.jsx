@@ -3,9 +3,9 @@ import React from "react";
 
 const Feature = () => {
   return (
-    <div className="flex max-sm:mt-56 items-center lg:gap-36 h-[80dvh] md:pt-16 lg:px-36">
+    <div className="flex mt-16 items-center lg:gap-36 min-h-[80dvh] md:pt-16 lg:px-36">
       <div className="md:grid grid-cols-6 h-full w-full text-white grid-rows-7 gap-4">
-        <div className="col-span-4 row-span-2 p-4 border rounded-md shadow-lg ">
+        <div className="col-span-4  row-span-2 p-4 border rounded-md shadow-lg ">
           <Timer className=" size-10  rounded-md bg-red-300 text-red-800 p-2 " />
           <h1 className="text-xl font-bold tracking-tight leading-snug">
             Time-Locked Delivery

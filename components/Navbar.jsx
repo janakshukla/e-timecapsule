@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
-      <nav className="from-transparent  bg-gradient-to-b to-primary-100 p-4 shadow-md">
+      <nav className="from-transparent  bg-gradient-to-b to-primary-300 p-4 shadow-md">
         <div className="container w-4/5 mx-auto flex justify-between items-center text-white">
           {/* Brand Name */}
           <Link
