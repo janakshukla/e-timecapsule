@@ -1,4 +1,5 @@
 import { StarHalf, StarIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 
@@ -7,7 +8,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex max-sm:flex-col items-center h-[80dvh] lg:px-36 ">
+    <div className="flex max-sm:flex-col items-center lg:gap-36 h-[80dvh] lg:px-36 ">
 
       {/* left div */}
       <div
@@ -52,9 +53,14 @@ export default function Home() {
       </div>
       {/*Right div*/}
       <div
-        className="sm:w-1/2 h-full w-svw max-sm:h-1/2 "
+        className="sm:w-1/2 h-full mt-52 w-svw max-sm:h-1/2 "
       >
-        
+        <Image
+          src="/bgimage.webp" // Path to your image (from the public directory)
+          alt="A descriptive alt text" // Required for accessibility
+           width={440}
+           height={440}
+        />
       </div>
 
     </div>
