@@ -56,8 +56,8 @@ export default function Home() {
         className="sm:w-1/2 h-full mt-52 w-svw max-sm:h-1/2 "
       >
         <Image
-          src="/bgimage.webp" // Path to your image (from the public directory)
-          alt="A descriptive alt text" // Required for accessibility
+          src="/bgimage.webp" 
+          alt="A descriptive alt text" 
            width={440}
            height={440}
         />
