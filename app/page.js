@@ -7,7 +7,7 @@ export default function Home() {
 
 
   return (
-    <div className="flex max-sm:flex-col items-center h-[80dvh] px-36 ">
+    <div className="flex max-sm:flex-col items-center h-[80dvh] lg:px-36 ">
 
       {/* left div */}
       <div
@@ -24,19 +24,19 @@ export default function Home() {
 
         </section>
         {/* lower section */}
-        <section className="mt-24" >
-          <div className="flex flex-col sm:flex-row w-full">
+        <section className="sm:mt-24" >
+          <div className="flex flex-row w-full">
             <div className="text-center w-1/2"  >
-              <h1 className="text-4xl font-bold"  >100%</h1>
-              <p className="text-sm text-gray-300 " >secure and reliable.</p>
+              <h1 className="text-2xl  sm:text-4xl font-bold"  >100%</h1>
+              <p className="text-xs sm:text-sm text-gray-300 " >secure and reliable.</p>
             </div>
             <div className=" text-center w-1/2"  >
-              <h1 className="text-4xl font-bold"  >20+</h1>
-              <p className="text-sm text-gray-300 " >grabbed user attention.</p>
+              <h1 className="text-2xl  sm:text-4xl font-bold"  >20+</h1>
+              <p className="text-xs sm:text-sm text-gray-300 " >grabbed user attention.</p>
             </div>
           </div>
           <div>
-            <h1 className="flex font-bold  size-44 justify-center w-full gap-1 mt-8" >
+            <h1 className="flex font-bold  size-24 sm:44 justify-center w-full gap-1 mt-8" >
               <StarIcon fill="#FFFFFF" />
               <StarIcon fill="#FFFFFF" />
               <StarIcon fill="#FFFFFF" />
@@ -52,8 +52,10 @@ export default function Home() {
       </div>
       {/*Right div*/}
       <div
-        className="sm:w-1/2 h-full w-svw max-sm:h-1/2 bg-blue-500"
-      ></div>
+        className="sm:w-1/2 h-full w-svw max-sm:h-1/2 "
+      >
+        
+      </div>
 
     </div>
   );
