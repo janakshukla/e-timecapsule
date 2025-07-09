@@ -21,26 +21,25 @@ export default function RootLayout({ children }) {
 
   return (
     <ClerkProvider
-      appearance={
-        {
-          userProfile:{
-            variables:{
-              fontFamily: customFont.family,
-              colorPrimary: "#1f2123",
-            }
-        },
+      appearance={{
+        userProfile: {
           variables: {
             fontFamily: customFont.family,
-            colorDanger: "#e94f37"
-
-          },
-        }
-      }
+            colorPrimary: "#1f2123",
+          }
+        },
+        variables: {
+          fontFamily: customFont.family,
+          colorDanger: "#e94f37"
+        },
+      }}
     >
       <html lang="en">
-        <body className={` bg-primary-300 ${customFont.className}`}>
+        <body className={`bg-primary-300 ${customFont.className} min-h-screen flex flex-col`}>
           <Navbar />
-          {children}
+          <main className="flex-1">
+            {children}
+          </main>
           <Footer />
         </body>
       </html>

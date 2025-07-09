@@ -53,7 +53,7 @@ export default function Home() {
       </div>
       {/*Right div*/}
       <div
-        className="sm:w-1/2 h-full mt-52 w-svw max-sm:h-1/2 "
+        className="sm:w-1/2 h-full mt-32 sm:mt-52 w-svw max-sm:h-1/2 "
       >
         <Image
           src="/bgimage.webp" 
