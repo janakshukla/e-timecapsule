@@ -1,3 +1,4 @@
+import { StarHalf, StarIcon } from "lucide-react";
 import Link from "next/link";
 
 
@@ -6,11 +7,11 @@ export default function Home() {
 
 
   return (
-    <div className="flex max-sm:flex-col items-center h-[80dvh]  w-full">
+    <div className="flex max-sm:flex-col items-center h-[80dvh] px-36 ">
 
       {/* left div */}
       <div
-        className="sm:w-1/2 h-full w-svw max-sm:h-1/2 text-white  bg-pink-500"
+        className="sm:w-1/2 h-full w-svw max-sm:h-1/2 text-white "
       >
         {/* upper section */}
         <section>
@@ -23,12 +24,28 @@ export default function Home() {
 
         </section>
         {/* lower section */}
-        <section>
-          <div className="">
-            <div></div>
-            <div></div>
+        <section className="mt-24" >
+          <div className="flex flex-col sm:flex-row w-full">
+            <div className="text-center w-1/2"  >
+              <h1 className="text-4xl font-bold"  >100%</h1>
+              <p className="text-sm text-gray-300 " >secure and reliable.</p>
+            </div>
+            <div className=" text-center w-1/2"  >
+              <h1 className="text-4xl font-bold"  >20+</h1>
+              <p className="text-sm text-gray-300 " >grabbed user attention.</p>
+            </div>
           </div>
-          <div></div>
+          <div>
+            <h1 className="flex font-bold  size-44 justify-center w-full gap-1 mt-8" >
+              <StarIcon fill="#FFFFFF" />
+              <StarIcon fill="#FFFFFF" />
+              <StarIcon fill="#FFFFFF" />
+              <StarIcon fill="#FFFFFF" />
+              <StarHalf fill="#FFFFFF" />
+              <span className="mt-1" >4.5</span>
+              <span className="text-xs mt-2 text-gray-400 " >Average user rating.</span>
+            </h1>
+          </div>
 
         </section>
 
