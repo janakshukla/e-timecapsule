@@ -8,12 +8,12 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   return (
     <>
-      <nav className="from-transparent  bg-gradient-to-b to-primary-300 p-4 shadow-md">
-        <div className="container w-4/5 mx-auto flex justify-between items-center text-white">
+      <nav className="from-transparent  bg-gradient-to-b to-primary-300 p-2 sm:p-4 shadow-md">
+        <div className="container w-4/5 mx-auto flex justify-between  items-center text-white">
           {/* Brand Name */}
           <Link
             href="/"
-            className="md:text-3xl font-extrabold font-mono hover:text-blue-400"
+            className="md:text-3xl font-extrabold tracking-tighter font-mono hover:text-blue-400"
           >
             E-TimeCapsule
           </Link>
@@ -64,7 +64,7 @@ const Navbar = () => {
               <div className="flex space-x-4">
                 <Link href="/sign-up">
                   <button
-                    className="bg-primary-300 hover:bg-blue-600 text-secondry-100 text-xs md:text-base py-2 px-4 rounded transition duration-300"
+                    className="bg-primary-300 hover:bg-blue-600 text-secondry-100 text-xs md:text-base py-2 px-2 sm:px-4 rounded transition duration-300"
                     aria-label="Sign Up"
                   >
                     Sign Up
@@ -72,7 +72,7 @@ const Navbar = () => {
                 </Link>
                 <Link href="/sign-in">
                   <button
-                    className=" bg-primary-300  hover:bg-blue-600 text-xs text-secondry-100 md:text-base py-2 px-4 rounded transition duration-300"
+                    className=" bg-primary-300  hover:bg-blue-600 text-xs text-secondry-100 md:text-base py-2  px-2 sm:px-4 rounded transition duration-300"
                     aria-label="Log In"
                   >
                     Log In
