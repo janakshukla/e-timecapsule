@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Plus, PlusCircleIcon } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = React.useState(false);
@@ -19,7 +20,7 @@ const Navbar = () => {
           </Link>
 
           {/* Navigation Links */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center font-semibold space-x-6">
             <SignedIn>
               {/* Links for Signed-In Users */}
               <div className="hidden sm:flex space-x-4">
@@ -30,10 +31,15 @@ const Navbar = () => {
                   Dashboard
                 </Link>
                 <Link href="/alluser" className="hover:text-blue-400">
-                  All Users
+                  All Capsules
                 </Link>
               </div>
               <UserButton />
+              <Link href="/createcapsule">
+                <button className=" text-secondry-100 mt-4 rounded hover:text-blue-600 mb-4">
+                  <PlusCircleIcon className="size-6" />
+                </button>
+              </Link>
               {/* Links with Hamburger for mobile users */}
               <div className="sm:hidden">
                 <button
@@ -105,7 +111,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(false)}
               className="block py-2 hover:text-blue-400"
             >
-              All Users
+              All capsules
             </Link>
           </div>
         )}

@@ -23,14 +23,8 @@ export default function Dashboard() {
 
   return (
     <div className=" min-h-screen bg-primary-300 text-secondry-100 ">
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
-
-      <Link href="/createcapsule">
-        <button className="bg-blue-500 text-secondry-100  py-2 px-4 rounded hover:bg-blue-600 mb-4">
-          Create Capsule
-        </button>
-      </Link>
-
+      
+     
       <div className="mt-4 grid grid-cols-1  object-center md:grid-cols-2 lg:grid-cols-3 gap-6">
         { isloaded ? (
           capsules.length === 0 ? (
