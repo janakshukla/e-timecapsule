@@ -41,7 +41,7 @@ const Navbar = () => {
                 </button>
               </Link>
               {/* Links with Hamburger for mobile users */}
-              <div className="sm:hidden">
+              <div className="sm:hidden mt-3">
                 <button
                   className="text-white focus:outline-none"
                   aria-label="Open Menu"
