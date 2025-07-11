@@ -76,98 +76,102 @@ export default function CapsuleForm() {
 
   return (
     <>
-    {submitting && (
-      <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-        <span className="text-white text-2xl font-semibold"><Loader/></span>
-      </div>
-    )}
+      {submitting && (
+        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+          <span className="text-white text-2xl font-semibold"><Loader /></span>
+        </div>
+      )}
 
-    <form
-      onSubmit={handleSubmit}
-      className="space-y-6 bg-gray-800 p-6 rounded shadow-md text-white"
-      encType="multipart/form-data"
-    >
-      <div>
-        <label htmlFor="title" className="block mb-2 font-semibold">
-          Title
-        </label>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          value={formData.title}
-          onChange={handleChange}
-          className="border p-2 w-full rounded bg-gray-700 text-white"
-          required
-          disabled={!isLoaded||submitting}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="description" className="block mb-2 font-semibold">
-          Description
-        </label>
-        <textarea
-          name="description"
-          id="description"
-          value={formData.description}
-          onChange={handleChange}
-          className="border p-2 w-full rounded bg-gray-700 text-white"
-          required
-          disabled={!isLoaded||submitting}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="date" className="block mb-2 font-semibold">
-          Date
-        </label>
-        <input
-          type="date"
-          name="date"
-          id="date"
-          value={formData.date}
-          onChange={handleChange}
-          className="border p-2 w-full rounded bg-gray-700 text-white"
-          required
-          disabled={!isLoaded || submitting}
-        />
-      </div>
-
-      <div>
-        <label htmlFor="image" className="block mb-2 font-semibold">
-          Image
-        </label>
-        <input
-          type="file"
-          name="image"
-          id="image"
-          required
-          accept="image/*"
-          onChange={handleImageChange}
-          className="border p-2 w-full rounded bg-gray-700 text-white"
-          disabled={!isLoaded || submitting}
-        />
+      <div className='place-items-center' >
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-6 bg-primary-300 p-6 w-[80dvw]   rounded  shadow-md text-white"
+        encType="multipart/form-data"
+      >
         {imagePreview && (
-          <div className="mt-4">
-            <p className="font-semibold">Image Preview:</p>
+          <div className="mt-4  ">
+            <p className="font-semibold  ">Image Preview</p>
             <img
               src={imagePreview}
               alt="Selected Preview"
-              className="mt-2 w-full max-w-sm rounded shadow-md"
+              className="mt-2  border rounded shadow-md"
             />
           </div>
         )}
-      </div>
+        <div>
+          <label htmlFor="title" className="block mb-2 font-semibold">
+            Title
+          </label>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            value={formData.title}
+            onChange={handleChange}
+            className="border p-2 w-full rounded bg-gray-700 text-white"
+            required
+            disabled={!isLoaded || submitting}
+          />
+        </div>
 
-      <button
-        type="submit"
-        className="bg-blue-500 hover:bg-blue-600 text-white font-semibold p-2 rounded disabled:bg-blue-950 "
-        disabled={!isLoaded || submitting}
-      >
-        Submit
-      </button>
-    </form>
+        <div>
+          <label htmlFor="description" className="block mb-2 font-semibold">
+            Description
+          </label>
+          <textarea
+            name="description"
+            id="description"
+            value={formData.description}
+            onChange={handleChange}
+            className="border p-2 w-full rounded bg-gray-700 text-white"
+            required
+            disabled={!isLoaded || submitting}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="date" className="block mb-2 font-semibold">
+            Date
+          </label>
+          <input
+            type="date"
+            name="date"
+            id="date"
+            min={new Date().toISOString().split('T')[0]}
+            value={formData.date}
+            onChange={handleChange}
+            className="border p-2 w-full rounded bg-gray-700 text-white"
+            required
+            disabled={!isLoaded || submitting}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="image" className="block mb-2 font-semibold">
+            Image
+          </label>
+          <input
+            type="file"
+            name="image"
+            id="image"
+            required
+            accept="image/*"
+            onChange={handleImageChange}
+            className="border p-2 w-full rounded bg-gray-700 text-white"
+            disabled={!isLoaded || submitting}
+          />
+
+        </div>
+
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold p-2 rounded disabled:bg-blue-950 "
+          disabled={!isLoaded || submitting}
+        >
+          Submit
+        </button>
+      </form>
+      </div>
     </>
   );
 }

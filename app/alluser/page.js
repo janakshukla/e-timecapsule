@@ -8,7 +8,11 @@ export default async function Page() {
 
     async function getcapsules() {
         try {
-            return await prisma.capsule.findMany();
+            return await prisma.capsule.findMany({
+                where: {
+                    Emailsent: true
+                  }
+            });
 
         } catch (error) {
             console.log(error);
