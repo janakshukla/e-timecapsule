@@ -1,6 +1,7 @@
 import Loader from "@/components/Loader";
 import { prisma } from "@/prisma/index";
 import { currentUser } from "@clerk/nextjs/server";
+import { X } from "lucide-react";
 import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
@@ -57,7 +58,7 @@ export default async function capsules({ params }) {
       <Suspense fallback={<Loader />}>
         <div className="flex flex-col items-center justify-center  backdrop-blur-lg shadow-slate-800   bg-primary-300/50 p-8 rounded-lg shadow-lg">
           <div className="flex items-center justify-between w-full mb-4">
-            <h1 className="text-3xl font-bold mb-4 text-secondry-300">{capsule.title}</h1>
+            <h1 className="text-3xl md:text-6xl font-bold mb-4 text-secondry-300">{capsule.title}</h1>
             <form
               action={async () => {
                 "use server";
@@ -65,8 +66,8 @@ export default async function capsules({ params }) {
               }}
 
             >
-              <button>
-                ❌
+              <button className="mt-0 h-full px-5 py-1  text-white font-semibold rounded-sm">
+                <X className="w-6 h-6 text-white hover:text-red-500 transition-colors" />
               </button>
             </form>
           </div>
