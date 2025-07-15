@@ -1,7 +1,3 @@
-Here's a comprehensive README for the [e-timecapsule](https://github.com/janakshukla/e-timecapsule) project:
-
----
-
 # 🕰️ e-TimeCapsule
 
 **e-TimeCapsule** is a modern web application that allows users to write personal thoughts, messages, or reflections and save them for future access. Built with cutting-edge technologies, it ensures a seamless and secure experience for preserving your memories.
