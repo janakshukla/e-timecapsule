@@ -1,5 +1,6 @@
 "use client"
 import Loader from "@/components/Loader";
+import Image from "next/image";
 import Link from "next/link";
 
 import { useEffect, useState } from "react";
@@ -38,9 +39,11 @@ export default function Dashboard() {
                 className="p-4 bg-gray-800 rounded shadow-lg content-center hover:shadow-xl transition-shadow duration-300"
               >
                 {/* Image */}
-                <img
+                <Image
                   src={capsule.image}
                   alt={capsule.title}
+                  width={400}
+                  height={300}
                   className="w-full h-48 object-cover rounded-t"
                 />
 
