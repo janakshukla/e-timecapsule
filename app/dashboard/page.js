@@ -58,7 +58,11 @@ export default function Dashboard() {
                 {/* Open Date */}
                 <p className="mt-4 text-sm text-gray-400">
                   <span className="font-bold text-gray-200">updatedAt:</span>{" "}
-                  {new Date(capsule.updatedAt).toLocaleDateString()}
+                  {/* {new Date(capsule.updatedAt).toLocaleDateString()} */}
+                  {new Intl.DateTimeFormat("en-GB", {
+                    dateStyle: "long"
+          
+                  }).format(new Date(capsule.updatedAt))}
                 </p>
               </Link>)
             ))
