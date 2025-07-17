@@ -1,12 +1,12 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { Plus, PlusCircleIcon } from "lucide-react";
+import { SignedIn, SignedOut, UserButton, useUser } from "@clerk/nextjs";
+import { PlusCircleIcon } from "lucide-react";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <nav className="from-transparent  bg-gradient-to-b to-primary-300 p-2 sm:p-4 shadow-md">
