@@ -24,13 +24,13 @@ const Navbar = () => {
             <SignedIn>
               {/* Links for Signed-In Users */}
               <div className="hidden sm:flex space-x-4">
-                <Link href="/" className="hover:text-blue-400">
+                <Link prefetch href="/" className="hover:text-blue-400">
                   Home
                 </Link>
                 <Link href="/dashboard" className="hover:text-blue-400">
                   Dashboard
                 </Link>
-                <Link href="/alluser" className="hover:text-blue-400">
+                <Link prefetch href="/alluser" className="hover:text-blue-400">
                   All Capsules
                 </Link>
               </div>
