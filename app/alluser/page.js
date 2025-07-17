@@ -2,6 +2,7 @@ import { prisma } from "@/prisma";
 import Link from "next/link";
 
 
+export const revalidate = 60*60*24;
 
 
 export default async function Page() {
@@ -11,7 +12,7 @@ export default async function Page() {
             return await prisma.capsule.findMany({
                 where: {
                     Emailsent: true
-                  }
+                }
             });
 
         } catch (error) {
